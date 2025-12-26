@@ -1,0 +1,16 @@
+@use "../abstracts/variables" as *;
+
+body {
+  font-family: $font-primary;
+  font-size: $font-size-base;
+  background: $color-background;
+}
+
+li {
+  list-style: none;
+  cursor: pointer;
+}
+
+* {
+  letter-spacing: .3px;
+}

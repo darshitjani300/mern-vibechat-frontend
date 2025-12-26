@@ -1,0 +1,51 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == "sm" {
+    @media (min-width: 640px) {
+      @content;
+    }
+  } @else if ($breakpoint == "md") {
+    @media (min-width: 768px) {
+      @content;
+    }
+  } @else if ($breakpoint == "lg") {
+    @media (min-width: 1024px) {
+      @content;
+    }
+  } @else if ($breakpoint == "xl") {
+    @media (min-width: 1280px) {
+      @content;
+    }
+  } @else if ($breakpoint == "2xl") {
+    @media (min-width: 1840px) {
+      @content;
+    }
+  } @else if ($breakpoint == "4xl") {
+    @media (min-width: 2560px) {
+      @content;
+    }
+  }
+}
+
+@mixin font-small {
+  font-size: 14px;
+}
+
+@mixin shadow($intensity: 0.15) {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, $intensity);
+}
+
+@mixin transition($props: all, $time: 0.3s) {
+  transition: $props $time ease;
+}

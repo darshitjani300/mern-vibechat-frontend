@@ -1,0 +1,108 @@
+@use "../../../../assets/styles/entry" as *;
+
+.conversationWrapper {
+  overflow-y: scroll;
+  padding-right: 10px;
+  box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    cursor: pointer;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  scrollbar-gutter: stable;
+
+  .containerWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      border-radius: 10px;
+      padding: 5px;
+
+      &:hover {
+        cursor: pointer;
+        background-color: rgb(246, 244, 244);
+      }
+
+      .imageContainer {
+        flex-shrink: 0;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 1px solid $color-secondary-bg;
+        border-color: transparent;
+
+        .image {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .wrapperContainer {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 0%;
+        min-width: 0;
+
+        .upperContainer {
+          display: flex;
+
+          .name {
+            flex: 1 1 0%;
+            min-width: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          .day {
+            font-size: small;
+            flex: 0 0 auto;
+            white-space: nowrap;
+          }
+        }
+
+        .lowerContainer {
+          display: flex;
+          width: 100%;
+          flex: 1 1 0%;
+          min-width: 0;
+
+          .chat {
+            flex: 1 1 0%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-width: 0;
+          }
+
+          .pinIcon {
+            flex: 0 0 auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+.msgWrapper {
+  display: none;
+}

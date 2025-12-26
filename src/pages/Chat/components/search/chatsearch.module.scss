@@ -1,0 +1,22 @@
+@use "../../../../assets/styles/entry" as *;
+
+.searchContainer {
+  margin-top: 10px;
+  background: $color-secondary-bg;
+  border-radius: 12px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .icon {
+    color: $color-icon;
+  }
+
+  .input {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: $color-icon;
+  }
+}

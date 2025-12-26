@@ -1,0 +1,161 @@
+@use "../../../assets/styles/entry" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .imageContainer {
+    display: none; // hidden by default for mobile
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .formContainer {
+    flex: 1;
+
+    .formWrapper {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 80%;
+      margin: 0 auto;
+
+      .header {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 20px;
+        width: 100%;
+        justify-content: center;
+
+        .logo {
+          height: 45px;
+        }
+      }
+
+      .form {
+        width: 100%;
+
+        .title {
+          margin-bottom: 0.1rem;
+        }
+
+        .inputContainer {
+          margin: 20px 0px;
+        }
+      }
+
+      .formFooter {
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+        margin-bottom: 15px;
+
+        .rememberSection {
+          @include font-small;
+          display: flex;
+          gap: 5px;
+          align-items: center;
+        }
+
+        .forgotLink,
+        .rememberLink {
+          @include font-small;
+          cursor: pointer;
+          text-decoration: underline;
+          text-underline-offset: 3px;
+        }
+
+        .rememberLink {
+          color: #007bff;
+        }
+      }
+
+      .divider {
+        height: 1px;
+        border: none;
+        background-color: #e9e9e9;
+        margin: 20px 0px;
+        width: 100%;
+      }
+
+      .altLogin {
+        width: 100%;
+        text-align: center;
+        .switchAuth {
+          margin-top: 10px;
+          @include font-small;
+          color: #666;
+        }
+      }
+
+      .switchLink {
+        color: #007bff;
+        cursor: pointer;
+        font-weight: 600;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  @include respond("md") {
+    flex-direction: row;
+
+    .imageContainer {
+      display: block;
+      flex: 1;
+      max-height: 100vh;
+    }
+
+    .formContainer .formWrapper {
+      max-width: 400px;
+    }
+  }
+
+  // Desktop (≥1280px)
+  @include respond("xl") {
+    .formContainer .formWrapper {
+      max-width: 450px;
+    }
+  }
+
+  // 2K screens (≥1840px)
+  @include respond("2xl") {
+    max-width: 1600px;
+    margin: 0 auto;
+
+    .formContainer .formWrapper {
+      max-width: 500px;
+    }
+  }
+
+  // 4K screens (≥2560px)
+  @include respond("4xl") {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    max-width: 2000px;
+    margin: 0 auto;
+
+    .imageContainer {
+      border-radius: 20px;
+      overflow: hidden;
+      height: 98%;
+    }
+
+    .formContainer .formWrapper {
+      max-width: 550px;
+    }
+  }
+}

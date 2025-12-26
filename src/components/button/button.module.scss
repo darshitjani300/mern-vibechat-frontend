@@ -1,0 +1,56 @@
+@use "../../assets//styles/entry" as *;
+
+.btn {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, $btn-primary);
+  color: #fff;
+  font-family: $font-primary;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  text-align: center;
+  @include shadow(0.15);
+  @include transition(all 0.3s ease);
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+    @include shadow(0.1);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: $gray-400;
+    box-shadow: none;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($btn-primary, 0.3);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+
+  .spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+}

@@ -1,0 +1,39 @@
+@use "../../assets/styles/entry" as *;
+
+.container {
+  background-color: white;
+  height: 100vh;
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  .headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+
+    h1 {
+      font-size: 1.8rem;
+    }
+  }
+
+  .profilePhoto {
+    display: block;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    @include respond("md") {
+      display: none;
+    }
+  }
+}
+
+.msgWrapper {
+  display: none;
+
+  @include respond("md") {
+    display: flex;
+  }
+}

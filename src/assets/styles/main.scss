@@ -1,0 +1,7 @@
+// 1. Abstracts (no CSS output)
+@use "abstracts/variables" as *;
+@use "abstracts/mixins";
+
+// 2. Base (outputs CSS)
+@use "base/reset";
+@use "base/global";

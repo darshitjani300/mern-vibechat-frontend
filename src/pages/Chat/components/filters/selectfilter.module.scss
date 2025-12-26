@@ -1,0 +1,27 @@
+@use "../../../../assets/styles/entry" as *;
+
+.filterContainer {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background: $color-background;
+  padding: 7px;
+  border-radius: 30px;
+  ul {
+    display: flex;
+    justify-content: space-between;
+    .items {
+      flex: 1;
+      padding: 10px;
+      border-radius: 30px;
+      font-size: small;
+      font-weight: 600;
+      color: $color-icon;
+      text-align: center;
+      transition: 0.3s ease;
+    }
+    .activeFilter {
+      background: $color-white;
+      color: $color-primary;
+    }
+  }
+}

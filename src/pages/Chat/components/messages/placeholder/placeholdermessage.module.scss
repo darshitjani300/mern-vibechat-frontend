@@ -1,0 +1,23 @@
+@use "../../../../../assets/styles/entry" as *;
+
+.messageContainer {
+  font-size: 30px;
+  background: #f1f4fa;
+  height: 100vh;
+  display: none;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    .imageContainer {
+      height: 120px;
+    }
+  }
+
+  @include respond("md") {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 3;
+  }
+}
