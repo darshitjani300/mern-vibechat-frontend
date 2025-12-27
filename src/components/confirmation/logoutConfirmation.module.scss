@@ -1,0 +1,99 @@
+.outterContainer {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+
+  /* Overlay + blur */
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  /* Center modal */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Smooth appearance */
+  animation: overlayFadeIn 0.2s ease-in-out;
+}
+
+.modal {
+  color: #111;
+  background : #f6f5f5;
+  width: 340px;
+  padding: 24px;
+  border-radius: 14px;
+  z-index: 11;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+
+  animation: modalScaleIn 0.25s ease-in-out;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.description {
+  font-size: 14px;
+  color: #474646;
+  margin-bottom: 20px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+
+  &.cancel {
+    background: #3c3c3c;
+    color: #fff;
+
+    &:hover {
+      background: #424141;
+    }
+  }
+
+  &.danger {
+    background: #f54c49;
+    color: #fff;
+
+    &:hover {
+      background: #e33f3f;
+    }
+  }
+}
+
+/* Animations */
+@keyframes overlayFadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(8px);
+  }
+}
+
+@keyframes modalScaleIn {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

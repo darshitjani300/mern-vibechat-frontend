@@ -21,8 +21,11 @@ export interface UserState {
   messages: Message[];
   userProfile: {
     userId: string;
+    name: string;
+    about: string;
     picture: { url: string };
   };
+  profileLoading: boolean;
 }
 
 const initialState: UserState = {
@@ -36,9 +39,12 @@ const initialState: UserState = {
   },
   messages: [],
   userProfile: {
+    name: "",
+    about: "",
     picture: { url: "" },
     userId: "",
   },
+  profileLoading: true,
 };
 
 export const userSlice = createSlice({
@@ -69,6 +75,7 @@ export const userSlice = createSlice({
     },
     userProfile: (state, action: PayloadAction<any>) => {
       state.userProfile = action.payload;
+      state.profileLoading = false;
     },
   },
 });

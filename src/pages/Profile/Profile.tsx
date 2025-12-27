@@ -4,7 +4,6 @@ import styles from "./profile.module.scss";
 import { getProfileApi, profileApi } from "../../api/profile";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { logout } from "../../api/authApi";
 import { toastMessage } from "../../utils/toastMessage";
 
 const Profile = () => {
@@ -19,10 +18,13 @@ const Profile = () => {
   const [user, _] = useState(userString ? JSON.parse(userString) : "");
   const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const [editMode, setEditMode] = useState({
-    name: true,
-    about: true,
+  const [saving, setSaving] = useState(false);
+  const originalProfileRef = useRef<{
+    name: string;
+    about: string;
+  }>({
+    name: "",
+    about: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,32 +62,43 @@ const Profile = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    const name = profileData.name.trim();
+    const about = profileData.about.trim();
+
+    // ✅ validation
+    if (!name || !about) {
+      toast.error("Name and About are required");
+      return;
+    }
+
+    const isNameChanged = name !== originalProfileRef.current.name;
+    const isAboutChanged = about !== originalProfileRef.current.about;
+
+    // 🚫 nothing changed → don't call API
+    if (!isNameChanged && !isAboutChanged && !profileData.picture) {
+      toastMessage("error", "No changes to save");
+      return;
+    }
+
+    setSaving(true);
+
     try {
       const formData = new FormData();
-      if (profileData.name && editMode.name == false)
-        formData.append("name", profileData.name);
-      if (profileData.about && editMode.about == false)
-        formData.append("about", profileData.about);
+      formData.append("name", name);
+      formData.append("about", about);
+
       if (profileData.picture) formData.append("picture", profileData.picture);
-
-      setEditMode((prev) => ({ ...prev, name: true, about: true }));
-
       await profileApi(formData);
+
+      toastMessage("success", "Profile has been updated");
+
+
+      setSaving(false);
     } catch (error) {
       console.log(error);
-    }
-  };
-
-  const handleLogout = async () => {
-    try {
-      const response = await logout();
-
-      if (response.status === true) {
-        toastMessage("success", "Sign-out");
-        window.location.reload();
-      }
-    } catch (error) {
-      toastMessage("error", "Error signing out");
+      setSaving(false);
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -93,7 +106,7 @@ const Profile = () => {
     const fetchProfile = async () => {
       try {
         const res = await getProfileApi();
-        const profile = res.data.profile;
+        const profile = res?.data?.profile;
 
         if (!profile) {
           return;
@@ -101,20 +114,21 @@ const Profile = () => {
 
         setProfileData((prev) => ({
           ...prev,
-          name: profile.name || "",
-          about: profile.about || "",
+          name: profile?.name || "",
+          about: profile?.about || "",
           pictureUrl: profile?.picture?.url || "",
         }));
+
+        originalProfileRef.current = {
+          name: profile?.name || "",
+          about: profile?.about || "",
+        };
       } catch (error) {
         console.log(error);
       }
     };
 
     fetchProfile();
-  }, []);
-
-  useEffect(() => {
-    setEditMode({ name: true, about: true });
   }, []);
 
   return (
@@ -175,29 +189,7 @@ const Profile = () => {
               name="name"
               value={profileData.name}
               onChange={handleChange}
-              disabled={editMode.name}
             />
-            <button
-              type="button"
-              onClick={async (e) => {
-                e.preventDefault();
-
-                if (editMode.name == false) {
-                  await handleSubmit(e as any);
-                  setEditMode((prev) => ({ ...prev, name: true }));
-                } else {
-                  setEditMode((prev) => ({ ...prev, name: false }));
-                }
-              }}
-              className={styles.btnCont}
-            >
-              <NavIcon
-                name={`${
-                  editMode.name == true ? "MdOutlineEdit" : "TiTickOutline"
-                }`}
-                className={styles.icon}
-              />
-            </button>
           </div>
         </div>
 
@@ -213,29 +205,7 @@ const Profile = () => {
               name="about"
               value={profileData.about}
               onChange={handleChange}
-              disabled={editMode.about}
             />
-            <button
-              type="button"
-              onClick={async (e) => {
-                e.preventDefault();
-
-                if (editMode.about == false) {
-                  await handleSubmit(e as any);
-                  setEditMode((prev) => ({ ...prev, about: true }));
-                } else {
-                  setEditMode((prev) => ({ ...prev, about: false }));
-                }
-              }}
-              className={styles.btnCont}
-            >
-              <NavIcon
-                name={`${
-                  editMode.about == true ? "MdOutlineEdit" : "TiTickOutline"
-                }`}
-                className={styles.icon}
-              />
-            </button>
           </div>
         </div>
 
@@ -258,18 +228,20 @@ const Profile = () => {
         </div>
 
         <button
-          type="button"
-          onClick={handleLogout}
-          className={styles.signOutBtn}
+          type="submit"
+          className={`${styles.btn} ${styles.danger}`}
+          disabled={saving}
         >
-          <NavIcon name="IoMdLogOut" />
-          Logout
+          {saving ? "Saving..." : "Save"}
         </button>
       </form>
 
       <div className={styles.rightContainer}>
         <img src="/favicon.svg" alt="Profile" className={styles.image} />
         <h2>Profile</h2>
+        <p className={styles.impChat}>
+          Finish setting up your profile to start chatting.
+        </p>
       </div>
     </div>
   );

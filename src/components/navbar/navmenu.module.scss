@@ -23,9 +23,13 @@
       .lowerContainer {
         height: 100%;
         display: flex;
+        align-items: flex-end;
+      }
+
+      .upperContainer {
+        display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        gap: 5px;
+        gap: 10px;
       }
 
       .icon {
@@ -36,8 +40,8 @@
         margin-bottom: 10px;
 
         .profilePhoto {
-          height: 40px;
-          width: 40px;
+          height: 36px;
+          width: 36px;
           border-radius: 50%;
           border: 2px solid transparent;
         }
