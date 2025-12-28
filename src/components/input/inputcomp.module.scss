@@ -1,31 +1,73 @@
+@use "../../assets/styles/entry" as *;
+
 .inputContainer {
-  display: flex;
-  flex-direction: column;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 100%;
+  > *:not(:first-child) {
+    margin-top: 6px;
+  }
 
   .label {
-    font-size: small;
-    padding-left: 5px;
-    padding-bottom: 3px;
-    width: 100%;
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #1f2937;
   }
 
   .inputPass {
     position: relative;
+
+    .iconCont {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      padding-left: 0.5rem;
+      display: flex;
+      align-items: center;
+      pointer-events: none;
+
+      .icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        color: $gray-400;
+      }
+    }
+
     .input {
-      background-color: #f2f2f2;
-      border: none;
-      padding: 7px;
       width: 100%;
-      border: 1px solid transparent;
-      border-radius: 5px;
+      height: 2.75rem;
+      padding: 1rem 1.25rem;
+      border: 1px solid;
+      border-color: #e5e7eb;
+      border-radius: 0.5rem;
+      background: white;
+      color: $gray-900;
+      transition: all;
+      box-shadow: 0 0 0 2px transparent;
+
+      &::placeholder {
+        color: $gray-400;
+      }
+
+      &:disabled {
+        background-color: $gray-100;
+        border-color: $gray-200;
+        color: $gray-500;
+        cursor: not-allowed;
+        box-shadow: none;
+      }
+
+      &:disabled::placeholder {
+        color: $gray-400;
+      }
 
       &:focus {
         outline: none;
-        border: 1px solid #017bff;
+        box-shadow: 0 0 0 2px $violet-500;
+        border: transparent;
       }
+    }
+
+    .isIcon {
+      padding-left: 2.5rem;
     }
   }
 

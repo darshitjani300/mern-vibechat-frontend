@@ -1,23 +1,29 @@
 @use "../../assets/styles/entry" as *;
 
 .wrapper {
-  display: flex;
   width: 100%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   .leftContainer {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 10px 20px;
-    gap: 30px;
+    max-width: 448px;
+
+    .leftContainerWrapper {
+      border: 1px solid $slate-300;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      background: white;
+    }
 
     .imageContainer {
-      margin-top: 40px;
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-bottom: 10px;
 
       .imagePadding {
         padding: 10px;
@@ -57,9 +63,10 @@
     }
 
     .inputContainer {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
+      > * {
+        margin: 1rem 0;
+      }
+
       .label {
         font-size: medium;
         font-weight: 600;
@@ -70,7 +77,12 @@
       .inputWrapper {
         width: 100%;
         display: flex;
+        align-items: flex-end;
         gap: 30px;
+
+        .input {
+          flex: 1;
+        }
 
         .btnCont {
           height: 40px;
@@ -78,18 +90,11 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          background: #e8e6e6;
+          background: $gray-100;
           padding: 5px;
           border-radius: 5px;
           border: 1px solid #c4c3c3;
-        }
-
-        .input {
-          width: 100%;
-          outline: none;
-          border: 1px solid #383737;
-          padding: 8px;
-          border-radius: 5px;
+          margin-bottom: 5px;
         }
 
         .icon {
@@ -100,17 +105,22 @@
       }
     }
 
-    .btn {
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-size: 14px;
-      cursor: pointer;
-      border: none;
-      transition: all 0.2s ease;
+    .saveBtn {
+      width: 100%;
+      text-align: end;
+      margin-top: 20px;
+      .btn {
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-size: 14px;
+        cursor: pointer;
+        border: none;
+        transition: all 0.2s ease;
 
-      &.danger {
-        background: $color-primary;
-        color: #fff;
+        &.danger {
+          background: $color-primary;
+          color: #fff;
+        }
       }
     }
 
@@ -140,23 +150,6 @@
       &:hover {
         transform: scale(1.05);
       }
-    }
-  }
-
-  .rightContainer {
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    display: none;
-
-    @include respond("md") {
-      display: flex;
-    }
-
-    .image {
-      height: 140px;
-      margin-bottom: 10px;
     }
   }
 

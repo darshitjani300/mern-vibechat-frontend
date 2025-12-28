@@ -5,6 +5,7 @@ import { getProfileApi, profileApi } from "../../api/profile";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { toastMessage } from "../../utils/toastMessage";
+import InputComp from "../../components/input/InputComp";
 
 const Profile = () => {
   const [profileData, setProfileData] = useState({
@@ -92,7 +93,6 @@ const Profile = () => {
 
       toastMessage("success", "Profile has been updated");
 
-
       setSaving(false);
     } catch (error) {
       console.log(error);
@@ -134,115 +134,104 @@ const Profile = () => {
   return (
     <div className={styles.wrapper}>
       <form className={styles.leftContainer} onSubmit={handleSubmit}>
-        <button onClick={() => navigate(-1)} className={styles.btnBack}>
-          <NavIcon name="IoArrowBackOutline" />
-        </button>
-
-        <div className={styles.imageContainer}>
-          <img
-            src={profileData?.pictureUrl ? profileData?.pictureUrl : "user.png"}
-            alt="profile"
-            className={`${!profileData?.pictureUrl && styles.imagePadding}`}
-          />
-        </div>
-
-        <div className={styles.fileInputContainer}>
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="image/*"
-            onChange={async (e) => {
-              const file = e.target.files?.[0];
-              if (!file) return;
-
-              if (file.size > 2 * 1000000) {
-                toast.error(
-                  "Fize Size if too large, please upload an image smaller than 2 MB."
-                );
-                return;
-              }
-
-              await imageUpload(file);
-            }}
-            className={styles.fileInput}
-          />
-
-          <button
-            type="button"
-            onClick={() => fileInputRef.current?.click()}
-            className={styles.fileBtn}
-          >
-            <NavIcon name="MdOutlineFileUpload" />
-            Upload Image
+        <div className={styles.leftContainerWrapper}>
+          <button onClick={() => navigate(-1)} className={styles.btnBack}>
+            <NavIcon name="IoArrowBackOutline" />
           </button>
-        </div>
 
-        <div className={styles.inputContainer}>
-          <label htmlFor="name" className={styles.label}>
-            Name
-          </label>
-          <div className={styles.inputWrapper}>
+          <div className={styles.imageContainer}>
+            <img
+              src={
+                profileData?.pictureUrl ? profileData?.pictureUrl : "user.png"
+              }
+              alt="profile"
+              className={`${!profileData?.pictureUrl && styles.imagePadding}`}
+            />
+          </div>
+
+          <div className={styles.fileInputContainer}>
             <input
-              type="text"
-              className={styles.input}
-              placeholder="Enter your name..."
+              ref={fileInputRef}
+              type="file"
+              accept="image/*"
+              onChange={async (e) => {
+                const file = e.target.files?.[0];
+                if (!file) return;
+
+                if (file.size > 2 * 1000000) {
+                  toast.error(
+                    "Fize Size if too large, please upload an image smaller than 2 MB."
+                  );
+                  return;
+                }
+
+                await imageUpload(file);
+              }}
+              className={styles.fileInput}
+            />
+
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              className={styles.fileBtn}
+            >
+              <NavIcon name="MdOutlineFileUpload" />
+              Upload Image
+            </button>
+          </div>
+
+          <div className={styles.inputContainer}>
+            <InputComp
+              inputType="text"
               name="name"
+              label="Name"
               value={profileData.name}
               onChange={handleChange}
+              placeholder="Enter your name..."
+              icon="BiRename"
             />
-          </div>
-        </div>
 
-        <div className={styles.inputContainer}>
-          <label htmlFor="about" className={styles.label}>
-            About
-          </label>
-          <div className={styles.inputWrapper}>
-            <input
-              type="text"
-              className={styles.input}
-              placeholder="Enter about yourself..."
-              name="about"
+            <InputComp
+              inputType="text"
+              label="About"
               value={profileData.about}
               onChange={handleChange}
+              placeholder="Enter about yourself..."
+              name="about"
+              icon="TiMessage"
             />
-          </div>
-        </div>
 
-        <div className={styles.inputContainer}>
-          <label htmlFor="email" className={styles.label}>
-            Email
-          </label>
-          <div className={styles.inputWrapper}>
-            <input
-              type="text"
-              className={`${styles.input} ${styles.disabledInput}`}
-              placeholder="Enter your Email..."
-              disabled={true}
-              value={user?.email || ""}
-            />
-            <button onClick={copyText} className={styles.btnCont}>
-              <NavIcon name="FaRegCopy" size={20} />
+            <div className={styles.inputWrapper}>
+              <div className={styles.input}>
+                <InputComp
+                  inputType="text"
+                  label="About"
+                  name="about"
+                  icon="MdOutlineMailOutline"
+                  disabled={true}
+                  value={user?.email || ""}
+                />
+              </div>
+              <button
+                onClick={copyText}
+                type="button"
+                className={styles.btnCont}
+              >
+                <NavIcon name="FaRegCopy" size={20} />
+              </button>
+            </div>
+          </div>
+          <div className={styles.saveBtn}>
+            <button
+              type="submit"
+              className={`${styles.btn} ${styles.danger}`}
+              disabled={saving}
+            >
+              {saving ? "Saving..." : "Save"}
             </button>
           </div>
         </div>
-
-        <button
-          type="submit"
-          className={`${styles.btn} ${styles.danger}`}
-          disabled={saving}
-        >
-          {saving ? "Saving..." : "Save"}
-        </button>
       </form>
-
-      <div className={styles.rightContainer}>
-        <img src="/favicon.svg" alt="Profile" className={styles.image} />
-        <h2>Profile</h2>
-        <p className={styles.impChat}>
-          Finish setting up your profile to start chatting.
-        </p>
-      </div>
     </div>
   );
 };

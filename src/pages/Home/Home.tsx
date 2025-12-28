@@ -6,7 +6,6 @@ import PlaceholderMessage from "../Chat/components/messages/placeholder/Placehol
 
 const Home = () => {
   const userSelected = useAppSelector((state) => state.userSlice.value);
-
   const selectedUser = userSelected.trim();
 
   return (

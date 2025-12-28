@@ -20,6 +20,10 @@ import { TiTickOutline } from "react-icons/ti";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { MdOutlineFileUpload } from "react-icons/md";
 import { IoMdLogOut } from "react-icons/io";
+import { FaRegCircleUser } from "react-icons/fa6";
+import { BiRename } from "react-icons/bi";
+import { TiMessage } from "react-icons/ti";
+import { MdOutlineMailOutline } from "react-icons/md";
 
 export {
   IoChatboxEllipses,
@@ -43,4 +47,8 @@ export {
   IoArrowBackOutline,
   MdOutlineFileUpload,
   IoMdLogOut,
+  FaRegCircleUser,
+  BiRename,
+  TiMessage,
+  MdOutlineMailOutline,
 };

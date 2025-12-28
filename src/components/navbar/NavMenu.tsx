@@ -34,12 +34,12 @@ const NavMenu = () => {
     },
     {
       id: 5,
-      name: "LuBotOff",
-      activeName: "LuBot",
+      name: "FaRegCircleUser",
+      activeName: "FaRegCircleUser",
       text: "Profile",
-      size: 20,
+      size: 28,
       path: "/profile",
-      url: data.picture?.url || "person.png",
+      url: data.picture?.url || "",
     },
     {
       id: 3,
@@ -72,7 +72,7 @@ const NavMenu = () => {
                       navigate(elem?.path || "/");
                     }}
                   >
-                    {elem?.url ? (
+                    {elem?.url && elem?.url !== "" ? (
                       <img
                         src={elem?.url}
                         alt="photo"
