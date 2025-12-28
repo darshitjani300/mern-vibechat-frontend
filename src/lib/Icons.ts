@@ -24,6 +24,9 @@ import { FaRegCircleUser } from "react-icons/fa6";
 import { BiRename } from "react-icons/bi";
 import { TiMessage } from "react-icons/ti";
 import { MdOutlineMailOutline } from "react-icons/md";
+import { MdOutlineEmail } from "react-icons/md";
+import { MdLockOutline } from "react-icons/md";
+import { RiUser3Line } from "react-icons/ri";
 
 export {
   IoChatboxEllipses,
@@ -51,4 +54,7 @@ export {
   BiRename,
   TiMessage,
   MdOutlineMailOutline,
+  MdOutlineEmail,
+  MdLockOutline,
+  RiUser3Line,
 };

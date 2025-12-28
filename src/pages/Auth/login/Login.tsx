@@ -131,6 +131,7 @@ const Login = () => {
                   value={userData?.email}
                   onChange={handleChange}
                   error={errorState.email}
+                  icon="MdOutlineEmail"
                 />
                 <InputComp
                   placeholder="Enter password"
@@ -140,6 +141,7 @@ const Login = () => {
                   onChange={handleChange}
                   name={"password"}
                   error={errorState.password}
+                  icon="MdLockOutline"
                 />
               </div>
 

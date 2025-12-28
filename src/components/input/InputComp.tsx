@@ -62,7 +62,7 @@ const InputComp = (props: Props) => {
           </div>
         )}
       </div>
-      <p className={styles.errorMsg}>{error}</p>
+      {error && <p className={styles.errorMsg}>{error}</p>}
     </div>
   );
 };

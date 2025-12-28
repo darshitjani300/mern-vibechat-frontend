@@ -25,6 +25,15 @@ export interface UserState {
     about: string;
     picture: { url: string };
   };
+  allChat: Array<{
+    picture: {
+      url: string;
+    };
+    name: string;
+    about: string;
+    userId: string;
+    _id: string;
+  }>;
   profileFetched: boolean;
 }
 
@@ -44,6 +53,7 @@ const initialState: UserState = {
     picture: { url: "" },
     userId: "",
   },
+  allChat: [],
   profileFetched: false,
 };
 
@@ -77,9 +87,21 @@ export const userSlice = createSlice({
       state.userProfile = action.payload;
       state.profileFetched = true;
     },
+    setAllChat: (state, action: PayloadAction<any>) => {
+      state.allChat = action.payload;
+    },
+    setProfileFetched: (state, action: PayloadAction<boolean>) => {
+      state.profileFetched = action.payload;
+    },
   },
 });
 
-export const { userSetid, storeProfile, setMessages, addMessage, userProfile } =
-  userSlice.actions;
+export const {
+  userSetid,
+  storeProfile,
+  setMessages,
+  addMessage,
+  userProfile,
+  setAllChat,
+} = userSlice.actions;
 export default userSlice.reducer;

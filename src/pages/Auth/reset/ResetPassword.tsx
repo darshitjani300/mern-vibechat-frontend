@@ -156,6 +156,7 @@ const ResetPassword = () => {
                       value={userData.password}
                       onChange={handleChange}
                       error={errorState.password}
+                      icon="MdLockOutline"
                     />
                     <InputComp
                       placeholder="Confirm new password"
@@ -165,6 +166,7 @@ const ResetPassword = () => {
                       value={userData.confirmPassword}
                       onChange={handleChange}
                       error={errorState.confirmPassword}
+                      icon="MdLockOutline"
                     />
                   </div>
                   <ButtonComp btn="Reset Password" loading={loading} />

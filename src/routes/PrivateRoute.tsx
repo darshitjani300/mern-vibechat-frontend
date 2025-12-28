@@ -5,7 +5,7 @@ import { useAppSelector } from "../types/reduxHooks";
 import { useDispatch } from "react-redux";
 import { getProfileApi } from "../api/profile";
 import { userProfile } from "../redux/features/chat/chat.slice";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const PrivateRoute = () => {
   const { user, loading } = useAuth();
@@ -15,36 +15,26 @@ const PrivateRoute = () => {
     (state) => state.userSlice.profileFetched
   );
   const dispatch = useDispatch();
-  const [profileLoading, setProfileLoading] = useState(false);
 
   useEffect(() => {
     if (!user || profileFetched) return;
 
     const fetchProfile = async () => {
-      setProfileLoading(true);
-
       try {
         const res = await getProfileApi();
         dispatch(userProfile(res.data?.profile ?? {}));
       } catch (error) {
         console.log(error);
-      } finally {
-        setProfileLoading(false);
       }
     };
     fetchProfile();
   }, [user, profile, dispatch]);
 
-  if (loading || profileLoading) {
-    return <div>Loading...</div>;
-  }
-
   // Not authenticated !!
-  if (!user) return <Navigate to="/login" replace />;
+  if (!loading && !user) return <Navigate to="/login" replace />;
 
-  // Root redirect
-  if (location.pathname === "/") {
-    return <Navigate to="/home" replace />;
+  if (loading || !profileFetched) {
+    return <div>Loading...</div>;
   }
 
   // Check

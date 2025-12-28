@@ -100,6 +100,7 @@ const ForgetPassword = () => {
                       value={email}
                       onChange={handleChange}
                       error={errorState}
+                      icon="MdOutlineEmail"
                     />
                   </div>
 

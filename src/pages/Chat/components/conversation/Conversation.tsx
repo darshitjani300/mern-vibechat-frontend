@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { getAllProfileApi } from "../../../../api/profile";
+import React, { useEffect } from "react";
 import NavIcon from "../../../../components/icons/NavIcon";
 import styles from "./conversation.module.scss";
 import { useAppDispatch, useAppSelector } from "../../../../types/reduxHooks";
@@ -15,23 +14,8 @@ import { openChatVal } from "../../../../redux/features/open/openChat.slice";
 
 const Conversation = () => {
   const dispatch = useAppDispatch();
-  const [data, setData] = useState<
-    Array<{
-      picture: {
-        url: string;
-      };
-      name: string;
-      about: string;
-      userId: string;
-      _id: string;
-    }>
-  >([]);
+  const data = useAppSelector((state) => state.userSlice.allChat);
   const userData = useAppSelector((state) => state.userSlice.userProfile);
-
-  const handleProfile = async () => {
-    const res = await getAllProfileApi();
-    setData(res.data.profile);
-  };
 
   const handleReduxStore = async (
     id: string,
@@ -55,11 +39,10 @@ const Conversation = () => {
     }
   };
 
-  const filterData = data?.filter((item) => item.userId != userData?.userId);
-
-  useEffect(() => {
-    handleProfile();
-  }, []);
+  const filterData = React.useMemo(
+    () => data?.filter((item) => item.userId != userData?.userId),
+    [data, userData?.userId]
+  );
 
   useEffect(() => {
     if (!userData?.userId) return;

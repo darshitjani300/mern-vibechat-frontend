@@ -132,6 +132,7 @@ const Signup = () => {
                   value={userData?.username}
                   onChange={handleChange}
                   error={errorState.username}
+                  icon="RiUser3Line"
                 />
                 <InputComp
                   placeholder="Enter email"
@@ -141,6 +142,7 @@ const Signup = () => {
                   onChange={handleChange}
                   name={"email"}
                   error={errorState.email}
+                  icon="MdOutlineEmail"
                 />
                 <InputComp
                   placeholder="Enter password"
@@ -150,6 +152,7 @@ const Signup = () => {
                   onChange={handleChange}
                   name={"password"}
                   error={errorState.password}
+                  icon="MdLockOutline"
                 />
               </div>
               <ButtonComp btn="Sign up" loading={loading} />
