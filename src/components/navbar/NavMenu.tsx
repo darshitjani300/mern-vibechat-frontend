@@ -21,8 +21,6 @@ const NavMenu = () => {
   const location = useLocation();
   const [isLogout, setIsLogout] = useState(false);
 
-  console.log("Profile ", data);
-
   const icons: Array<NavIconType> = [
     {
       id: 1,
@@ -122,6 +120,7 @@ const NavMenu = () => {
           </ul>
         </div>
       </div>
+
       {isLogout && <LogoutConfirmation onClose={() => setIsLogout(false)} />}
     </div>
   );

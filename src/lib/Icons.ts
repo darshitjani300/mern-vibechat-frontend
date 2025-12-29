@@ -27,6 +27,8 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { MdOutlineEmail } from "react-icons/md";
 import { MdLockOutline } from "react-icons/md";
 import { RiUser3Line } from "react-icons/ri";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { IoMdClose } from "react-icons/io";
 
 export {
   IoChatboxEllipses,
@@ -57,4 +59,6 @@ export {
   MdOutlineEmail,
   MdLockOutline,
   RiUser3Line,
+  RxHamburgerMenu,
+  IoMdClose,
 };

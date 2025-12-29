@@ -40,9 +40,10 @@
         margin-bottom: 10px;
 
         .profilePhoto {
-          height: 36px;
-          width: 36px;
+          height: 38px;
+          width: 38px;
           border-radius: 50%;
+          object-fit: cover;
           border: 2px solid transparent;
         }
 

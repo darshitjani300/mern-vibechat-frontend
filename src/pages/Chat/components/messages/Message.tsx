@@ -36,6 +36,8 @@ const Message = () => {
     }
   }, [messages]);
 
+  console.log("Messages: ", messages);
+
   return (
     <div
       className={`${styles.messageWrapper} ${
@@ -102,6 +104,7 @@ const Message = () => {
               className={styles.input}
               value={input}
               onChange={(e) => setInput(e.target.value)}
+              maxLength={999}
             />
           </div>
 

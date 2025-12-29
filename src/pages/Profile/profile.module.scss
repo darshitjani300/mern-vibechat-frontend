@@ -2,14 +2,99 @@
 
 .wrapper {
   width: 100%;
-  padding: 1rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: 20px;
+
+  .headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    background: white;
+    width: 100%;
+    border-bottom: 1px solid $gray-300;
+    padding: 5px 10px;
+
+    h1 {
+      font-size: 1.8rem;
+    }
+
+    .menuIcon {
+      position: relative;
+      padding: 10px 15px;
+
+      .menuCont {
+        background: white;
+        position: absolute;
+        right: 0;
+        width: 170px;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        border-radius: 10px;
+
+        .menuItemCont {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          width: 100%;
+          justify-content: center;
+          align-items: center;
+
+          .menuItems {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            width: 80%;
+            justify-content: center;
+            padding: 5px 8px;
+            border-radius: 6px;
+
+            &:hover {
+              background: $gray-100;
+            }
+
+            svg {
+              flex-shrink: 0;
+            }
+          }
+        }
+      }
+
+      @include respond("md") {
+        display: none;
+      }
+    }
+    @include respond("md") {
+      display: none;
+    }
+  }
+
+  .profileHeader {
+    text-align: center;
+    margin: 20px 0px;
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: $slate-900;
+    }
+
+    p {
+      font-size: 1rem;
+      color: $slate-600;
+      max-width: 400px;
+    }
+  }
 
   .leftContainer {
     width: 100%;
     max-width: 448px;
+    padding: 20px;
 
     .leftContainerWrapper {
       border: 1px solid $slate-300;
@@ -152,6 +237,10 @@
         transform: scale(1.05);
       }
     }
+
+    @include respond("md") {
+      padding: 0px;
+    }
   }
 
   .impChat {
@@ -166,5 +255,9 @@
 
   @include respond("md") {
     height: auto;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
