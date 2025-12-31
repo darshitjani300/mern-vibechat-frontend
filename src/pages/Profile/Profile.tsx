@@ -146,7 +146,7 @@ const Profile = () => {
     <>
       <div className={styles.wrapper}>
         <div className={styles.headerContainer}>
-          <h1>VibeChat</h1>
+          <h1>PingXo</h1>
 
           <div className={styles.menuIcon}>
             <button onClick={toggleSideBar}>
@@ -186,16 +186,12 @@ const Profile = () => {
           <h1>Profile</h1>
           <p>
             Please fill out all the details to unlock all the features of
-            VibeChat.
+            PingXo.
           </p>
         </div>
 
         <form className={styles.leftContainer} onSubmit={handleSubmit}>
           <div className={styles.leftContainerWrapper}>
-            <Link to={"/home"} className={styles.btnBack}>
-              <NavIcon name="IoArrowBackOutline" />
-            </Link>
-
             <div className={styles.imageContainer}>
               <img
                 src={

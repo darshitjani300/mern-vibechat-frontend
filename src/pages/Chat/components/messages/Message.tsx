@@ -36,7 +36,19 @@ const Message = () => {
     }
   }, [messages]);
 
-  console.log("Messages: ", messages);
+  useEffect(() => {
+    const updateHeight = () => {
+      const vh = window.visualViewport?.height ?? window.innerHeight;
+      document.documentElement.style.setProperty("--chat-height", `${vh}px`);
+    };
+
+    updateHeight();
+    window.visualViewport?.addEventListener("resize", updateHeight);
+
+    return () => {
+      window.visualViewport?.removeEventListener("resize", updateHeight);
+    };
+  }, []);
 
   return (
     <div
@@ -46,7 +58,7 @@ const Message = () => {
     >
       <div className={styles.headerSection}>
         <div className={styles.container}>
-          <button onClick={handleBack}>
+          <button className={styles.backCont} onClick={handleBack}>
             <NavIcon name="IoArrowBackOutline" size={22} />
           </button>
 

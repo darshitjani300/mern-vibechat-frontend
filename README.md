@@ -1,4 +1,4 @@
-# Vibechat
+# PingXo
 
 A real-time chat app built using Vite, React, Redux, and Socket.io.
 
@@ -13,7 +13,7 @@ A real-time chat app built using Vite, React, Redux, and Socket.io.
 
 ## Getting Started
 
-- Clone the repository using `git clone https://github.com/darshitjani/vibechat-frontend.git`
+- Clone the repository using `git clone https://github.com/darshitjani/PingXo-frontend.git`
 - install dependencies using `npm install`
 - start the development server using `npm run dev`
 - open the app in your browser at `http://localhost:5173`

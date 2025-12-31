@@ -106,7 +106,7 @@ const Login = () => {
     <section>
       <div className={styles.container}>
         <div className={styles.imageContainer}>
-          <img src={loginBg} alt="VibeChat background" />
+          <img src={loginBg} alt="PingXo background" />
         </div>
 
         <div className={styles.formContainer}>
@@ -115,10 +115,10 @@ const Login = () => {
             <div className={styles.header}>
               <img
                 src="/favicon.svg"
-                alt="VibeChat logo"
+                alt="PingXo logo"
                 className={styles.logo}
               />
-              <h1>VibeChat</h1>
+              <h1>PingXo</h1>
             </div>
 
             {/* Login Form */}

@@ -7,6 +7,14 @@ body {
   box-sizing: border-box;
 }
 
+html,
+body,
+#root {
+  overscroll-behavior: none;
+  height: 100%;
+
+}
+
 li {
   list-style: none;
   cursor: pointer;

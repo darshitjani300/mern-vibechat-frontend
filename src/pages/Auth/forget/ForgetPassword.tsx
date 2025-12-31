@@ -56,7 +56,7 @@ const ForgetPassword = () => {
     <section>
       <div className={styles.container}>
         <div className={styles.imageContainer}>
-          <img src={forgotBg} alt="VibeChat background" />
+          <img src={forgotBg} alt="PingXo background" />
         </div>
 
         <div className={styles.formContainer}>
@@ -64,10 +64,10 @@ const ForgetPassword = () => {
             <div className={styles.header}>
               <img
                 src="/favicon.svg"
-                alt="VibeChat logo"
+                alt="PingXo logo"
                 className={styles.logo}
               />
-              <h1>VibeChat</h1>
+              <h1>PingXo</h1>
             </div>
 
             {isEmailSent ? (

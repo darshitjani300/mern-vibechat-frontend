@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./inputcomp.module.scss";
 import { FiEye } from "react-icons/fi";
 import { FiEyeOff } from "react-icons/fi";
@@ -31,6 +31,16 @@ const InputComp = (props: Props) => {
     maxLength,
   } = props;
   const [showPassword, setShowPassword] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleFocus = () => {
+    setTimeout(() => {
+      inputRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }, 150); 
+  };
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -50,6 +60,8 @@ const InputComp = (props: Props) => {
           </div>
         )}
         <input
+          ref={inputRef}
+          onFocus={handleFocus}
           name={name}
           type={showPassword ? "text" : inputType}
           placeholder={placeholder || ""}

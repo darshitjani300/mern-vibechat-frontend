@@ -57,8 +57,9 @@
       .wrapperContainer {
         display: flex;
         flex-direction: column;
-        flex: 1 1 0%;
+        width: 100%;
         min-width: 0;
+        overflow: hidden;
 
         .upperContainer {
           display: flex;
@@ -81,21 +82,21 @@
         .lowerContainer {
           display: flex;
           width: 100%;
-          flex: 1 1 0%;
           min-width: 0;
-          justify-content: space-between;
+          overflow: hidden;
+        }
 
-          .chat {
-            width: 100%;
-            max-width: 300px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-          }
+        .chat {
+          flex: 1 1 0%;
+          width: 0;
+          min-width: 0;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
 
-          .pinIcon {
-            flex: 0 0 auto;
-          }
+        .pinIcon {
+          flex: 0 0 auto;
         }
       }
     }

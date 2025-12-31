@@ -24,7 +24,7 @@ const Chat = () => {
       }`}
     >
       <div className={styles.headerContainer}>
-        <h1>VibeChat</h1>
+        <h1>PingXo</h1>
 
         <div className={styles.menuIcon}>
           <button onClick={toggleSideBar}>

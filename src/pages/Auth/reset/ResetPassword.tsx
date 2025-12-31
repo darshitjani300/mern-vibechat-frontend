@@ -108,7 +108,7 @@ const ResetPassword = () => {
     <section>
       <div className={styles.container}>
         <div className={styles.imageContainer}>
-          <img src={resetBg} alt="VibeChat background" />
+          <img src={resetBg} alt="PingXo background" />
         </div>
 
         <div className={styles.formContainer}>
@@ -116,10 +116,10 @@ const ResetPassword = () => {
             <div className={styles.header}>
               <img
                 src="/favicon.svg"
-                alt="VibeChat logo"
+                alt="PingXo logo"
                 className={styles.logo}
               />
-              <h1>VibeChat</h1>
+              <h1>PingXo</h1>
             </div>
 
             {isResetSuccess ? (
@@ -128,7 +128,7 @@ const ResetPassword = () => {
                   Password updated successfully 🎉
                 </h2>
                 <p className={styles.subtitle}>
-                  You’re all set, <strong>VibeChatter</strong>! Your password
+                  You’re all set, Your password
                   has been securely updated — you can now sign in and continue
                   your conversations without missing a beat.
                 </p>
@@ -145,7 +145,7 @@ const ResetPassword = () => {
                   {" "}
                   <p className={styles.subtitle}>
                     Looks like you’re getting back in — great to have you again!
-                    Choose a strong password to secure your VibeChat account.
+                    Choose a strong password to secure your PingXo account.
                   </p>
                   <div className={styles.inputContainer}>
                     <InputComp

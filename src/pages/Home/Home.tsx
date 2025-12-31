@@ -26,12 +26,10 @@ const Home = () => {
   }, []);
 
   return (
-    <>
-      <div className={styles.wrapper}>
-        <Chat />
-        {!selectedUser ? <PlaceholderMessage /> : <Message />}
-      </div>
-    </>
+    <div className={styles.wrapper}>
+      <Chat />
+      {!selectedUser ? <PlaceholderMessage /> : <Message />}
+    </div>
   );
 };
 
