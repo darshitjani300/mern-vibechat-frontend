@@ -8,12 +8,10 @@ A real-time chat app built using Vite, React, Redux, and Socket.io.
 - User authentication
 - User profiles
 - Chat rooms
-- Message reactions (likes, loves, etc.)
-- File sharing (images, videos, etc.)
 
 ## Getting Started
 
-- Clone the repository using `git clone https://github.com/darshitjani/PingXo-frontend.git`
+- Clone the repository using `git clone`
 - install dependencies using `npm install`
 - start the development server using `npm run dev`
 - open the app in your browser at `http://localhost:5173`
@@ -29,7 +27,3 @@ A real-time chat app built using Vite, React, Redux, and Socket.io.
 - Backend: Node.js
 - Database: MongoDB
 - Build Tool: Vite
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
